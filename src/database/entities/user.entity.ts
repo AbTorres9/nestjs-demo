@@ -1,9 +1,20 @@
-import { Table, Column, Model, PrimaryKey } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  PrimaryKey,
+  AutoIncrement,
+} from 'sequelize-typescript';
 
 @Table
-export class User extends Model {
+export class User extends Model<User> {
+  @AutoIncrement
   @PrimaryKey
-  userId: string;
+  @Column
+  id: number;
+
+  @Column
+  UserId: string;
 
   @Column
   firstName: string;
@@ -16,6 +27,9 @@ export class User extends Model {
 
   @Column
   email: string;
+
+  @Column
+  password: string;
 
   //   @Column
   //   hashedPassword: string;
