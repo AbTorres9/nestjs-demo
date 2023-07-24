@@ -1,7 +1,18 @@
-import { Table, Column, Model } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  PrimaryKey,
+  AutoIncrement,
+} from 'sequelize-typescript';
 
 @Table
-export class Post extends Model {
+export class Category extends Model {
+  @AutoIncrement
+  @PrimaryKey
+  @Column
+  id: number;
+
   @Column
   categoryId: string;
 

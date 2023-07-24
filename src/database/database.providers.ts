@@ -1,5 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import { User } from './entities/user.entity';
+import { Posts } from './entities/post.entity';
+import { Category } from './entities/category.entity';
 
 export const databaseProviders = [
   {
@@ -10,11 +12,12 @@ export const databaseProviders = [
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: 'qwerty',
+        password: '',
         database: 'database_development',
-        models: [User],
+        logging: false,
+        models: [User, Posts, Category],
       });
-      sequelize.addModels([User]);
+      //sequelize.addModels([User]);
       await sequelize.sync();
       return sequelize;
     },

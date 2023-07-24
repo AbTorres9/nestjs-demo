@@ -13,8 +13,8 @@ export class User extends Model<User> {
   @Column
   id: number;
 
-  @Column
-  UserId: string;
+  // @Column
+  // UserId: number;
 
   @Column
   firstName: string;

@@ -8,7 +8,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  async create(@Body() userDto: CreateUserDto): Promise<User> {
+  async create(@Body() userDto: any): Promise<User> {
     let newUser = await this.userService.create(userDto);
     delete newUser.dataValues.password;
     return newUser.dataValues;
@@ -17,7 +17,8 @@ export class UserController {
   @Get(':id')
   async readbyId(@Param('id') id: number): Promise<User> {
     let fetchedUser = await this.userService.getUserbyId(id);
-    delete fetchedUser.dataValues.password;
-    return fetchedUser.dataValues;
+    //console.log(fetchedUser, 'FU');
+
+    return fetchedUser;
   }
 }

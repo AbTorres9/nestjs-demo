@@ -6,12 +6,13 @@ import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
-  async create(userDto: CreateUserDto): Promise<User> {
+  async create(userDto: any): Promise<User> {
     return await User.create(userDto);
   }
 
   async getUserbyId(id: number): Promise<User> {
-    const dataReceived = User.findByPk(id);
+    const dataReceived = await User.findByPk(id);
+    console.log(dataReceived, 'DR');
     if (dataReceived === null) {
       {
         throw new HttpException('BadRequest', HttpStatus.BAD_REQUEST);
